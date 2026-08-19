@@ -1,0 +1,33 @@
+{
+  "name": "ai-architecture",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@10.32.1",
+  "engines": {
+    "node": ">=24.0.0 <25"
+  },
+  "scripts": {
+    "build": "turbo run typecheck && turbo run build",
+    "dev": "pnpm --filter @ai-architecture/desktop dev",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "lint": "biome lint .",
+    "test": "turbo run test",
+    "test:e2e": "pnpm --filter @ai-architecture/desktop test:e2e",
+    "typecheck": "turbo run typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "latest",
+    "@dotenvx/dotenvx": "latest",
+    "shadcn": "latest",
+    "turbo": "latest",
+    "typescript": "latest",
+    "vitest": "latest"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "esbuild"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@ai-architecture/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./project-shell": "./src/project-shell.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

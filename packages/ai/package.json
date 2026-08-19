@@ -1,0 +1,15 @@
+{
+  "name": "@ai-architecture/ai",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./provider-contract": "./src/provider-contract.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "ai": "latest"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "paths": {
+      "@/*": ["./src/renderer/*"]
+    },
+    "types": ["vite/client", "vitest/globals"]
+  },
+  "include": ["src/renderer/**/*.ts", "src/renderer/**/*.tsx"]
+}

@@ -1,0 +1,12 @@
+node_modules/
+.turbo/
+.vite/
+dist/
+out/
+coverage/
+playwright-report/
+test-results/
+*.log
+
+.env.keys
+.env.*

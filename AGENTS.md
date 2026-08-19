@@ -14,6 +14,14 @@ Read `PROJECT.md` before planning substantive work. It contains the product dire
 - Keep pertinent specs/designs and statuses synchronized with implementation. Never weaken documentation to excuse nonconforming code.
 - Move applicable documents to `in-progress` when implementation begins and to `implemented` only after a targeted acceptance audit passes.
 
+## Linear specification tracking
+
+- Track every numbered file in `docs/specs/` with exactly one issue in the **AI Architecture** Linear project under the **Brian Francis** team. Create the Linear issue in the same work that creates a new spec.
+- Follow the AI Ticket Tracker organization: use a product-facing issue title and description, link the canonical `SPEC-###` file, and assign the issue to the milestone for its primary work category. Reuse an existing category milestone when possible; create a new milestone only for a durable category that will cover multiple specs.
+- Keep each issue description synchronized with the spec's current summary, goals, non-goals, requirements, acceptance criteria and governing design links. Any material spec content change requires a corresponding Linear description update in the same work.
+- Keep spec and Linear statuses synchronized in the same work: `draft` maps to `Backlog`, `ready` to `Todo`, `in-progress` to `In Progress`, `implemented` to `Done`, and `deferred` to `Canceled`.
+- When a spec changes both content and status, update both the Linear issue description and status before handoff. Confirm the issue remains in the AI Architecture project and the correct category milestone.
+
 ## Repository boundaries
 
 - `apps/desktop` is the Electron composition root; keep main, preload and renderer responsibilities separate.
@@ -57,4 +65,3 @@ If a command does not yet exist because `SPEC-000` is not implemented, follow th
 - Process boundaries and external data are validated; no privileged capability leaks into the renderer.
 - Tests cover the change at the lowest useful level and include end-to-end coverage when user-visible behavior or process integration changes.
 - Relevant standard checks pass, and the final report names the checks run plus any explicitly approved exceptions.
-

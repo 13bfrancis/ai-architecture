@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "types": ["node"]
+  },
+  "include": [
+    "forge.config.ts",
+    "playwright.config.ts",
+    "src/renderer/desktop-api.d.ts",
+    "tests/e2e/**/*.ts",
+    "vite.*.config.mts",
+    "vitest.config.mts"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "name": "@ai-architecture/desktop",
+  "productName": "AI Architecture",
+  "version": "0.1.0",
+  "private": true,
+  "main": ".vite/build/main.js",
+  "scripts": {
+    "build": "electron-forge package",
+    "dev": "electron-forge start",
+    "test": "vitest run",
+    "test:e2e": "pnpm build && playwright test",
+    "typecheck": "tsc -p tsconfig.config.json --noEmit && tsc -p tsconfig.main.json --noEmit && tsc -p tsconfig.preload.json --noEmit && tsc -p tsconfig.renderer.json --noEmit"
+  },
+  "dependencies": {
+    "@ai-architecture/ai": "workspace:*",
+    "@ai-architecture/ai-provider-codex": "workspace:*",
+    "@ai-architecture/contracts": "workspace:*",
+    "@ai-architecture/core": "workspace:*",
+    "@ai-architecture/database": "workspace:*",
+    "@ai-architecture/diagram-language": "workspace:*",
+    "@ai-architecture/ui": "workspace:*",
+    "@ai-sdk/react": "latest",
+    "@tanstack/react-query": "latest",
+    "@tanstack/react-router": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "zustand": "latest"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "latest",
+    "@electron-forge/maker-zip": "latest",
+    "@electron-forge/plugin-fuses": "latest",
+    "@electron-forge/plugin-vite": "latest",
+    "@electron/fuses": "1.8.0",
+    "@playwright/test": "latest",
+    "@tailwindcss/vite": "latest",
+    "@tanstack/router-plugin": "latest",
+    "@testing-library/jest-dom": "latest",
+    "@testing-library/react": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "electron": "latest",
+    "jsdom": "latest",
+    "tailwindcss": "latest",
+    "vite": "latest"
+  }
+}

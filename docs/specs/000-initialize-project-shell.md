@@ -1,6 +1,6 @@
 ---
 id: SPEC-000
-status: draft
+status: implemented
 ---
 
 # Initialize the project shell
@@ -9,13 +9,13 @@ status: draft
 
 Initialize a runnable, tested macOS Electron project shell for AI Architecture. The result is a pnpm/Turborepo monorepo containing the desktop app and all agreed internal package shells, with the core toolchain installed and wired. The desktop app displays one simple, presentable introduction route and intentionally provides no diagram, chat, AI, database or DSL product behavior.
 
-This specification must be promoted to `ready` before implementation begins.
+This specification is implemented and passed its acceptance audit.
 
 ## Context
 
 The project needs a stable foundation before product capabilities are specified. The shell must prove that the package manager, task graph, Electron process boundaries, Vite renderer, file-based routing, shared UI, cross-workspace source imports, validation, tests and environment conventions work together.
 
-No design document governs this placeholder shell. Its styling is deliberately neutral and must not be treated as permanent branding. If implementation introduces material interaction or visual decisions beyond the shell described here, create a numbered design document through `$write-designs` before implementing them.
+[DESIGN-001](../designs/001-project-shell-foundation.md) governs the placeholder shell's layout, neutral token foundation, runtime-information states and accessibility behavior. Its styling is deliberately neutral and must not be treated as permanent branding. If implementation introduces material interaction or visual decisions beyond that design, revise the design through `$write-designs` before implementing them.
 
 ## Goals
 
@@ -227,6 +227,25 @@ Centralize the experimental Playwright Electron launch helper. The end-to-end sm
 | AC-011 | No canvas, diagram, chat, Codex runtime, database or other product feature is implemented. |
 | AC-012 | An acceptance audit records evidence for AC-001 through AC-011 before this spec is marked `implemented`. |
 
+## Acceptance audit
+
+Audit completed on 2026-08-18 against the implementation and DESIGN-001.
+
+| ID | Evidence | Result |
+| --- | --- | --- |
+| AC-001 | Node 24.14.0 and pnpm 10.32.1 are pinned; a full `pnpm install --frozen-lockfile` reinstall completed from `pnpm-lock.yaml`. | Pass |
+| AC-002 | `pnpm dev` started the Vite renderer server, built main/preload targets and reported `Launched Electron app`; the shell was also visually inspected through the Electron smoke harness. | Pass |
+| AC-003 | `main-window-options.test.ts` locks `nodeIntegration: false`, `contextIsolation: true` and sandboxing; the Electron test verifies absent Node globals, the one-method API and denied window creation; `window-security.ts` denies navigation. | Pass |
+| AC-004 | Contract tests cover accepted/rejected request and response values, component tests cover the safe error state, and Electron verifies `Desktop shell ready · v0.1.0 · macOS` across the live bridge. | Pass |
+| AC-005 | All required workspaces expose intentional TypeScript-source subpaths; browser-safe and Node-only resolution tests pass, as do all eight strict workspace typechecks. | Pass |
+| AC-006 | TanStack Router generated `routeTree.gen.ts` from the root/index route files during Vite builds; the generated file is excluded from Biome and renders in Electron. | Pass |
+| AC-007 | Both `components.json` files use matching new-york/lucide/neutral settings; Tailwind CSS v4 compiles shared semantic styles and the renderer consumes the shared Card export. | Pass |
+| AC-008 | `pnpm format:check`, `pnpm lint`, `pnpm typecheck`, `pnpm test` and `pnpm build` all completed successfully. | Pass |
+| AC-009 | `pnpm test:e2e` launches the built Electron app, validates heading/runtime/security/layout/appearance/zoom behavior, records no page errors and closes cleanly. | Pass |
+| AC-010 | `.env` is comment-only, `.env.keys` and plaintext variants are ignored, and a repository scan found no API key, token or private-key material. | Pass |
+| AC-011 | Source/package review confirms only shell metadata, runtime-info proof, shared Card/styles and infrastructure exist; no deferred product feature or dependency was introduced. | Pass |
+| AC-012 | This audit maps AC-001 through AC-011 to passing command, test, inspection and repository evidence before the status transition to `implemented`. | Pass |
+
 ## Implementation sequence
 
 1. After explicit approval, change this spec from `draft` to `ready`.
@@ -244,6 +263,7 @@ All product capabilities and packaging/distribution concerns listed under Non-go
 
 ## References
 
+- [DESIGN-001: Project shell foundation](../designs/001-project-shell-foundation.md)
 - [Electron Forge getting started](https://www.electronforge.io/)
 - [Electron Forge Vite plugin](https://www.electronforge.io/config/plugins/vite)
 - [Electron security checklist](https://www.electronjs.org/docs/latest/tutorial/security)
